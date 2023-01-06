@@ -1,0 +1,151 @@
+ {% extends 'layouts/Layout.html'%}
+ <!-- Page Heading -->
+ {% load static %}
+ {% block content %}
+
+    <div class="container">
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-9 col-lg-12 col-md-12">
+
+                <div class="card o-hidden border-0 shadow-lg my-4">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="container">
+                                        <!--img src="{% static 'img/login.png' %}" / style="width:"-->
+                                        <br/>
+                                        <div class="text-center my_pink_bg">
+                                                <h1 class="h1 text-white mb-8">Parametres par de defaut</h1>
+                                        </div>                                  
+                                </div>
+                                
+                            
+                            </div>
+                            <div class="col-lg-12">
+                                <hr/>
+                            </div>
+                            <div class="col-lg-12 ">
+                                <div class="container">
+                                    
+                                    <div class="user">
+                                        <form class="form-group container" method="post" action="{% url 'set_default_parameters' %}"id="add_user">
+
+                                            {% csrf_token %}
+
+                                            <input type="hidden" {% if config.id %} value="{{config.id}}" {% endif %} name="id" />
+
+                                            <div class="row form-inline">
+                                                <div><br/></div>
+                                                <div class="input-group col-12">
+                                                  <span class="input-group-text" id="basic-addon1"><img class="img-f img-thumbnail rounded-circle mx-auto d-block " src="{% static 'img/email_icon.png' %}" style="height: 30px;"></span>
+                                                  <input type="text" class="form-control" placeholder="URL de Base *" aria-label="URL de Base" aria-describedby="basic-addon1" {% if config.url_2_base %} value="{{config.url_2_base}}" {% endif %} name="url_2_base" required>
+                                                </div>
+
+                                                <div><br/></div>
+
+                                                <div class="input-group col-12">
+                                                  <span class="input-group-text" id="basic-addon1"><img class="img-f img-thumbnail rounded-circle mx-auto d-block " src="{% static 'img/location.png' %}" style="height: 30px;"></span>
+                                                  <input type="number" class="form-control" placeholder="Port" aria-label="Port" aria-describedby="basic-addon1" {% if config.port %} value="{{config.port}}" {% endif %}  name="port" >
+                                                </div>
+
+                                                <div><br/></div>
+                                                <div class="input-group col-12">
+                                                  <span class="input-group-text" id="basic-addon1"><img class="img-f img-thumbnail rounded-circle mx-auto d-block " src="{% static 'img/organisation.png' %}" style="height: 30px;"></span>
+                                                  <input type="text" class="form-control" placeholder="Signataire URL *" aria-label="signataire_url" aria-describedby="basic-addon1" {% if config.signataire_url %} value="{{config.signataire_url}}" {% endif %}  name="signataire_url" required>
+                                                </div>
+                                                                                                
+                                                <div><br/></div>
+                                                <div class="input-group col-12">
+                                                  <span class="input-group-text" id="basic-addon1"><img class="img-f img-thumbnail rounded-circle mx-auto d-block " src="{% static 'img/double_authentication-icon.png' %}" style="height: 30px;"></span>
+                                                  <input  type="number" class="form-control" placeholder="Temps de validite du code OTP en seconde *"  aria-describedby="basic-addon1" name="OTP_time_validity" {% if config.OTP_time_validity %} value="{{config.OTP_time_validity}}" {% endif %}  required>
+                                                </div>
+
+                                                <div><br/></div>
+                                                <div class="input-group col-12">
+                                                  <span class="input-group-text" id="basic-addon1"><img class="img-f img-thumbnail rounded-circle mx-auto d-block " src="{% static 'img/email_icon.png' %}" style="height: 30px;"></span>
+                                                  <input  type="text" class="form-control" placeholder="Objet demande de signature *"  aria-describedby="basic-addon1" name="before_signature_alert_message_subject" {% if config.OTP_time_validity %} value="{{config.before_signature_alert_message_subject}}" {% endif %}  required>
+                                                </div>
+
+                                                <div><br/></div>
+                                                <div class="input-group col-12">
+                                                  <span class="input-group-text" id="basic-addon1"><img class="img-f img-thumbnail rounded-circle mx-auto d-block " src="{% static 'img/email_icon.png' %}" style="height: 30px;"></span>
+                                                  <textarea class="form-control" placeholder="Message pour demande de signature *"  aria-describedby="basic-addon1" name="before_signature_alert_message"  required>{% if config.OTP_time_validity %} {{config.before_signature_alert_message}} {% endif %}</textarea>
+                                                </div>
+
+                                                <div><br/></div>
+                                                <div class="input-group col-12">
+                                                  <span class="input-group-text" id="basic-addon1"><img class="img-f img-thumbnail rounded-circle mx-auto d-block " src="{% static 'img/email_icon.png' %}" style="height: 30px;"></span>
+                                                  <input  type="text" class="form-control" placeholder="Objet envoie du fichier apres signature *"  aria-describedby="basic-addon1" name="signedFile_alert_sending_subject"  {% if config.signedFile_alert_sending_subject %} value="{{config.signedFile_alert_sending_subject}}" {% endif %} required>
+                                                </div>
+
+                                                
+
+                                                <div><br/></div>
+                                                <div class="input-group col-12">
+                                                  <span class="input-group-text" id="basic-addon1"><img class="img-f img-thumbnail rounded-circle mx-auto d-block " src="{% static 'img/email_icon.png' %}" style="height: 30px;"></span>
+                                                  <textarea class="form-control" placeholder="Message envoie du fichier apres signature *"  aria-describedby="basic-addon1" name="signedFile_alert_sending_message"  required>{% if config.signedFile_alert_sending_message %} {{config.signedFile_alert_sending_message}} {% endif %}</textarea>
+                                                </div>
+
+                                                 <div><br/></div>
+                                                <div class="input-group col-12">
+                                                  <span class="input-group-text" id="basic-addon1"><img class="img-f img-thumbnail rounded-circle mx-auto d-block " src="{% static 'img/email_icon.png' %}" style="height: 30px;"></span>
+                                                  <input  type="text" class="form-control" placeholder="Objet envoie du certificat de signature *"  aria-describedby="basic-addon1" name="signature_certificat_objet"  {% if config.signature_certificat_objet %} value="{{config.signature_certificat_objet}}" {% endif %} required>
+                                                </div>
+
+                                                
+
+                                                <div><br/></div>
+                                                <div class="input-group col-12">
+                                                  <span class="input-group-text" id="basic-addon1"><img class="img-f img-thumbnail rounded-circle mx-auto d-block " src="{% static 'img/email_icon.png' %}" style="height: 30px;"></span>
+                                                  <textarea class="form-control" placeholder="Message envoie du certificat de signature *"  aria-describedby="basic-addon1" name="signature_certificat_message"  required>{% if config.signature_certificat_message %} {{config.signature_certificat_message}} {% endif %}</textarea>
+                                                </div>
+
+                                                
+                                                <div><br/></div>
+                                                <div class="input-group col-12">
+                                                  <span class="input-group-text" id="basic-addon1"><img class="img-f img-thumbnail rounded-circle mx-auto d-block " src="{% static 'img/email_icon.png' %}" style="height: 30px;"></span>
+                                                  <input type="text" class="form-control" placeholder="Message envoie du certificat de signature *"  aria-describedby="basic-addon1" name="signature_certificat_template_url" {% if config.signature_certificat_template_url %} value=" {{config.signature_certificat_template_url}}" {% endif %} required />
+                                                </div>
+
+
+
+                                                <div><br/></div>
+                                                <div class="input-group col-12">
+                                                   <input  type="submit" class="fadeIn fourth btn text-white my_pink_bg btn-user btn-block" value="VALIDER" id="soumettre_login">
+                                                </div>
+
+
+                                            </div>
+                                           
+                                        </form>
+                                       
+                                        
+                                        
+                                    </div>
+                                    <hr>
+                                </div>
+
+                            </div>
+                            
+                            <div class="col-lg-12">
+                                        
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+{% endblock %}

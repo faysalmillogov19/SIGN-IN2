@@ -1,0 +1,70 @@
+  {% extends 'backend/Layout.html'%}
+ <!-- Page Heading -->
+ {% load static %}
+ {% block content %}
+  <div class="container-fluid py-4">
+      <div class="row">
+        <div class="col-12">
+          <div class="card my-4">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+              <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                <h6 class="text-white text-capitalize ps-3">Certificats</h6>
+              </div>
+            </div>
+            <div class="card-body px-0 pb-2">
+              <div class="table-responsive p-0">
+                 <table class="table align-items-center justify-content-center mb-0">
+                                  <thead>
+                                    <tr>
+                                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Certificat </th>
+                                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Size</th>
+                                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Geographie</th>
+                                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Contacts</th>
+                                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Infos Structure</th>
+                                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Date</th>
+                                      <th></th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    {% for cert in certificats %}
+                                    <tr>
+                                      <td>
+                                        <p class="text-sm font-weight-bold mb-0">Cert: {{cert.nom_cert|slice:":20" }}</p>
+                                        <p class="text-sm font-weight-bold mb-0">Key : {{cert.nom_key|slice:":20"}}</p>
+                                      </td>
+                                      <td>
+                                        <span class="text-xs font-weight-bold">{{cert.key_size}}</span>
+                                      </td>
+                                      <td>
+                                        <p class="text-sm font-weight-bold mb-0">Pays: {{cert.pays}}</p>
+                                        <p class="text-sm font-weight-bold mb-0">Region/Province : {{cert.region}}</p>
+                                        <p class="text-sm font-weight-bold mb-0">Localite : {{cert.localite}}</p>
+                                      </td>
+                                      <td>
+                                        <p class="text-sm font-weight-bold mb-0">Email: {{cert.email}}</p>
+                                        <p class="text-sm font-weight-bold mb-0"> TEl : {{cert.telephone}}</p>
+                                      </td>
+                                      <td>
+                                        <p class="text-sm font-weight-bold mb-0">Organisation/Structure : {{cert.organisation}}</p>
+                                        <p class="text-sm font-weight-bold mb-0">Direction/Service : {{cert.direction}}</p>
+                                      </td>
+                                      <td>
+                                        <span class="text-xs font-weight-bold">{{cert.created_at}}</span>
+                                      </td>
+                                      <td class="align-middle">
+                                        <a class="btn btn-link text-secondary mb-0" href="{% url 'delete_cert' cert.id %}">
+                                          <i class="material-icons opacity-50">delete-alert</i>
+                                        </a>
+                                      </td>
+                                    </tr>
+                                    {% endfor %}
+                                  </tbody>
+                                </table>
+                          </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

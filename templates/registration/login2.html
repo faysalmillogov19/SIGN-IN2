@@ -1,0 +1,106 @@
+ {% extends 'layouts/LayoutConnexion.html'%}
+ <!-- Page Heading -->
+ {% load static %}
+ {% block content %}
+
+    <div class="container">
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-6 col-lg-12 col-md-12">
+
+                <div class="card o-hidden border-0 shadow-lg my-4">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-12">
+								<div class="container">
+										<!--img src="{% static 'img/login.png' %}" / style="width:"-->
+                                        <br/>
+                                        <div class="text-center my_pink_bg">
+                                                <h1 class="h1 text-white mb-8">LOGIN</h1>
+                                        </div>									
+								</div>
+								
+							
+							</div>
+							<div class="col-lg-12">
+								<hr/>
+							</div>
+                            <div class="col-lg-12 ">
+                                <div class="container">
+                                    
+                                    <div class="user">
+                                        <form class="form-group container" method="POST" action="{% url 'log_in'%}">
+                                            {% csrf_token %}
+                                            <div class="row form-inline">
+                                               
+                                                <div><br/></div>
+                                                <div class="input-group col-12">
+                                                    <span class="input-group-text" id="basic-addon1"><img class="img-f img-thumbnail rounded-circle mx-auto d-block " src="{% static 'img/user_icon.png' %}" style="height: 30px;"></span>
+                                                  <input type="text" class="form-control username" placeholder="Username" aria-label="Nom" aria-describedby="basic-addon1" name="email" {% if email %} value="{{ email }}" {% endif %} required>
+                                                </div>
+                                                <!--div><br/></div>
+                                                <div class="input-group col-12">
+                                                  <span class="input-group-text" id="basic-addon1">@</span>
+                                                  <input type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" name="email" required>
+                                                </div-->
+
+                                                <div><br/></div>
+                                                <div class="input-group col-12">
+                                                  <span class="input-group-text" id="basic-addon1"><img class="img-f img-thumbnail rounded-circle mx-auto d-block " src="{% static 'img/safety-icon.png' %}" style="height: 30px;"></span>
+                                                  <input type="password" class="form-control password" placeholder="Password" aria-describedby="basic-addon1" name="password" {% if password %} value="{{ password }}" {% endif %} required>
+                                                </div>
+
+                                                <div><br/></div>
+                                                <div class="input-group col-12">
+                                                   <button id="soumettre_login" class="fadeIn fourth btn my_pink_bg text-white btn-user btn-block">Log In</button>
+                                                </div>
+
+                                                <div><br/></div>
+                                                <P class="input-group text-danger col-12">
+                                                    {% if message %} {{message}} {% endif %}
+                                                   
+                                                </P>
+
+                                           </div>
+                                           
+                                        </form>
+                                        <div class="form-group">
+                                            
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="custom-control custom-checkbox small">
+                                              
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                    <hr>
+                                </div>
+
+                            </div>
+							
+							<div class="col-lg-12">
+                                    <a href="{% url 'add_user'%}" class="container my_pink_text ">
+                                         Créer un compte
+                                    </a>
+										
+							</div>
+                            <div class="col-lg-12"><br/></div>
+							
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+{% endblock %}

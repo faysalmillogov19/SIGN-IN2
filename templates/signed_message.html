@@ -1,0 +1,72 @@
+ {% extends 'layouts/Layout.html'%}
+ <!-- Page Heading -->
+ {% load static %}
+ {% block content %}
+
+    <div class="container">
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-12 col-lg-12 col-md-12">
+                     
+                                    <div class="text-center">
+                                    	<hr>
+                                        <h1 class="h4 text-gray-900 mb-4">SIGN-IN</h1>
+                                    </div>
+                                    <div class="user">
+                                        <div class="form-group">
+                                            <p class="text-justify text-center">
+												
+											</p>
+                                        </div>
+                                        <div class="row card">
+                                           <table class="table">
+											  <thead>
+												<tr>
+												  <th scope="col">#</th>
+												  <th scope="col"></th>
+												  <th scope="col">Nom</th>
+												  <th scope="col">Signer</th>
+												  
+												</tr>
+											  </thead>
+											  <tbody>
+												
+												<tr>
+												  <th scope="row">1</th>
+												  <td><img class="img-fluid img-thumbnail rounded-circle" src="{% static signataire.image %}" style="width:100px;height:100px"></td>
+												  <td>{{signataire.nom_complet}}</td>
+												  <td>
+												  	{% if signataire.signed %}
+			                                            <span class="badge badge-sm bg-gradient-success">Oui</span>
+			                                            {% else %}
+			                                            <span class="badge badge-sm bg-gradient-danger">Non</span>
+			                                            {% endif %}
+												  </td>
+												</tr>
+										
+											  </tbody>
+											</table>
+                                        </div>
+										<div class="col-lg-12">
+											<a href="{% url 'accueil'%}" class="btn my_pink_bg text-white btn-user btn-block">
+												Accueil
+											</a>
+											<!--a href="{% url 'membres' %}" class="btn btn-google btn-user btn-block">
+												<i class="fas fa-download fa-sm text-white-50"></i> Evaluer
+											</a-->
+										</div>
+                                      	<div class="col-lg-12"><br></div>
+       
+                                        
+                                    </div>
+                                    <hr>
+                                
+                        
+                    </div>
+            
+
+
+
+{% endblock %}

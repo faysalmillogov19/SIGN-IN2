@@ -1,0 +1,109 @@
+ {% extends 'layouts/Layout.html'%}
+ <!-- Page Heading -->
+ {% load static %}
+ {% block content %}
+                    <div class="justify-content-center align-items-center ">
+
+						
+                        
+						<form class="row " id="others_signers_form" method="POST" action="{% url 'other_signers' signataire.id %}" enctype="multipart/form-data" >
+
+							{% csrf_token %}
+
+							<div class="col-12 ">
+								<br/>
+							</div>
+
+							
+						    <div class="col-6 container">
+								</br>	
+						    	<div class="row">
+						    		<div class="col-3">
+										<select name="cert" class="btn btn-dark selectpicker container"  placeholder="choisir un certificat" required>
+											{% for cert in certificats %}
+												<option value="{{cert.id}}">Du {{cert.created_at}}</option>
+											{% endfor %}
+											
+										</select>											
+									</div>
+									<div class="col-9">
+									    <p class="form-check form-check-inline">Préférez vous utiliser votre signature personnalisée ?</p>
+									    <div class="form-check form-check-inline">
+				  							<input class="form-check-input" type="radio" name="own_signature" id="prefered_signature1" value="1" checked>
+				 							<label class="form-check-label" for="prefered_signature1">OUI</label>
+										</div>
+										<div class="form-check form-check-inline">
+				  							<input class="form-check-input" type="radio" name="own_signature" id="prefered_signature2" value="0">
+				  							<label class="form-check-label" for="prefered_signature2">NON</label>
+										</div>
+													
+									</div>
+									<hr>
+						    	</div>
+
+								<div class="row">
+									<div class="col-6" id="default_signature_image_value_block">
+										<div class="custom-file col-12">
+											<input type="hidden" id="default_signature_image_value"  name="default_image">
+											<div class="dropdown">
+												<label class="custom-file-label pulse" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" for="imageInput">Clicker ici pour choisir un fichier pdf *</label>
+												<ul class="dropdown-menu">
+													{% for image in default_signatures_images %}
+													
+													<li>
+														<img id='{{image}}' class="default_signature_image" src="{% static image|slice:'7:' %}" width="200px">
+													</li>													
+													{%endfor%}
+												</ul>
+											</div>
+											<div class="">
+												<img id="print_signature_image" width="326" height="200" style="border: 1px solid #ddd;">
+												<br>
+											</div>
+																  
+										</div>
+									</div>
+									<div class="col-6 container">
+										<canvas id="signature" width="300" height="200" style="border: 1px solid #ddd;"></canvas>
+										<br>
+										<a  class="btn  my_pink_bg text-white float-right" id="clear-signature">Clear</a>
+									</div>
+
+								</div>
+
+							</div>
+
+
+						    <div class="col-6 container ">	
+						    	<br/>
+							
+									<br/>
+									
+								
+								<div id="zone_pdf">
+									<div id="container">
+										<object id="fileSrc" data-toggle="modal" data-target="#exampleModal" data={% if file %} "{%static file %}"  {% endif %}  type="application/pdf" width="100%" height="400">
+										</object>
+
+									</div>
+								</div>
+								
+								<div class="col-12">
+									<hr/>
+								</div>
+								
+								<div class="col-12">							
+									<a class="btn my_pink_bg text-white float-right" id="other_signers_form_button"> SIGNER </a>							
+								</div>
+								
+								<div class="col-12"><br/></div>
+							</div>
+
+						</form>
+						
+                        
+                    </div> 
+
+
+
+{% endblock %}

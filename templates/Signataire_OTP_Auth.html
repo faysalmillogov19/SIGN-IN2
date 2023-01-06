@@ -1,0 +1,44 @@
+ {% extends 'layouts/Layout.html'%}
+ <!-- Page Heading -->
+ {% load static %}
+ {% block content %}
+                    <div class=" container justify-content-center align-items-center ">
+
+						<div class="container"   >
+							
+							<div class="container" >
+								
+							  
+								<form method="post" class="container" action="{% url 'signataire_OTP_auth' link %}" style="width:50%">
+									{% csrf_token %}
+									<div class=" text-center ">
+									<h5 class="text-white text-center">Entrer le code OTP</h5>
+																		</div>
+									<div class="modal-body">
+										<div><br/></div>
+									
+									<div class="input-group col-12">
+                                                  <span class="input-group-text" id="basic-addon1"><img class="img-f img-thumbnail rounded-circle mx-auto d-block " src="{% static 'img/safety-icon.png' %}" style="height: 30px;"></span>
+                                                  <input type="number" class="form-control" placeholder="CODE OTP" aria-label="code" aria-describedby="basic-addon1"   name="otp" >
+                                    </div>
+
+
+
+									</div>
+									<div class="modal-footer">
+									<input type="submit" name="verifier" class="btn my_pink_bg text-white" value="Verifier" >
+									<!--button type="button" class="btn my_pink_bg text-white" id="confirm_ajout_signantaire">Ajouter</button-->
+									<a type="button" class="btn btn-secondary" data-dismiss="modal">GENERER A NOUVEAU</a>
+									</div>
+								</form>
+							  
+							</div>
+						</div>
+                        <br/><br/>
+						
+                        
+                    </div> 
+
+
+
+{% endblock %}

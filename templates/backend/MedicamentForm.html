@@ -1,0 +1,192 @@
+ {% extends 'layouts/Layout.html'%}
+ <!-- Page Heading -->
+ {% load static %}
+ {% block content %}
+    <!-- End Navbar -->
+      
+
+        <div class="row">
+          <div class="col-lg-7 col-md-8 col-12 mx-auto">
+            <div class="card z-index-0 fadeIn3 fadeInBottom">
+              <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
+                  <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">PHARMACIE</h4>
+                </div>
+              </div>
+              <div class="card-body">
+                <form role="form" method="POST" class="text-start" action="{% url 'add_medicament'%}">
+                  {% csrf_token %}
+
+                  <input type="hidden" {% if data.id %} value="{{data.id}}" name="id" {% endif %}  >
+
+                  <label class="form-label">SIGIPCODE</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="SIGIPCODE" {% if data.SIGIPCODE %} value="{{data.SIGIPCODE}}"  {% endif %} class="form-control" required>
+                  </div>
+				  
+				  <label class="form-label">ProductStatus</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="ProductStatus" {% if data.ProductStatus %} value="{{data.ProductStatus}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">GroupName</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="GroupName" {% if data.GroupName %} value="{{data.GroupName}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">BrandCode</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="BrandCode" {% if data.BrandCode %} value="{{data.BrandCode}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">GenericCode</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="GenericCode" {% if data.GenericCode %} value="{{data.GenericCode}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">CommercialId</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="CommercialId" {% if data.CommercialId %} value="{{data.CommercialId}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">CommercialName</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="CommercialName" {% if data.CommercialName %} value="{{data.CommercialName}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">StrengthId</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="StrengthId" {% if data.StrengthId %} value="{{data.StrengthId}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">StrengthName</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="StrengthName" {% if data.StrengthName %} value="{{data.StrengthName}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">PacksizeId</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="PacksizeId" {% if data.PacksizeId %} value="{{data.PacksizeId}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">PacksizeName</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="PacksizeName" {% if data.PacksizeId %} value="{{data.PacksizeName}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">DosageFormId</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="DosageFormId" {% if data.DosageFormId %} value="{{data.DosageFormId}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">DosageFormName</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="DosageFormName" {% if data.PacksizeName %} value="{{data.DosageFormName}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">DciId</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="PacksizeId" {% if data.DciId %} value="{{data.DciId}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">DciName</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="DciName" {% if data.DciId %} value="{{data.DciName}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">DemanderId</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="DemanderId" {% if data.DciId %} value="{{data.DemanderId}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">DemanderName</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="DemanderName" {% if data.DciId %} value="{{data.DemanderName}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">DemanderAddress</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="DemanderAddress" {% if data.DciId %} value="{{data.DemanderAddress}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">PaysEXploitant</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="PaysEXploitant" {% if data.DciId %} value="{{data.PaysEXploitant}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">IntituleFabriquant</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="IntituleFabriquant" {% if data.DciId %} value="{{data.IntituleFabriquant}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">paysFabriquant</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="paysFabriquant" {% if data.DciId %} value="{{data.paysFabriquant}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">RepresentantLocalouExploitant</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="RepresentantLocalouExploitant" {% if data.DciId %} value="{{data.RepresentantLocalouExploitant}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">VoieAdministration</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="VoieAdministration" {% if data.DciId %} value="{{data.VoieAdministration}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">DateExpirationDeLAMM</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="DateExpirationDeLAMM" {% if data.DciId %} value="{{data.DateExpirationDeLAMM}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">ClasseTherapeuthique</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="ClasseTherapeuthique" {% if data.DciId %} value="{{data.ClasseTherapeuthique}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">GPCCode</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="GPCCode" {% if data.DciId %} value="{{data.GPCCode}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">EAGTIN</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="EAGTIN" {% if data.DciId %} value="{{data.EAGTIN}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">EAQty</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="EAQty" {% if data.DciId %} value="{{data.EAQty}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">EAChildGTIN</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="EAChildGTIN" {% if data.DciId %} value="{{data.EAChildGTIN}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">PKGTIN</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="PKGTIN" {% if data.DciId %} value="{{data.PKGTIN}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">PKQty</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="PKQty" {% if data.DciId %} value="{{data.PKQty}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">PKChildGTIN</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="PKChildGTIN" {% if data.DciId %} value="{{data.PKChildGTIN}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">GAGTIN</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="GAGTIN" {% if data.DciId %} value="{{data.GAGTIN}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">CAQty</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="CAQty" {% if data.DciId %} value="{{data.CAQty}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">CAChildGTIN</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="CAChildGTIN" {% if data.DciId %} value="{{data.CAChildGTIN}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">PLGTIN</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="PLGTIN" {% if data.DciId %} value="{{data.PLGTIN}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">PLQty</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="PLQty" {% if data.DciId %} value="{{data.PLQty}}"  {% endif %} class="form-control" required>
+                  </div>
+				  <label class="form-label">PLChildGTIN</label>
+                  <div class="input-group input-group-outline my-3">
+                    <input type="text" name="PLChildGTIN" {% if data.DciId %} value="{{data.PLChildGTIN}}"  {% endif %} class="form-control" required>
+                  </div>
+                  
+                    <div class="col-4">
+                      <div class="text-center">
+                        <input type="submit" value="Enregistrer" type="button" class="btn bg-gradient-primary w-100 my-4 mb-2">
+                      </div>
+                    </div>
+                  </div>
+                  
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+      
+
+ {% endblock %}

@@ -1,0 +1,32 @@
+def signer(cert, key, input, pass_phrase, nom_complet, img, position, ttf, url):
+	signer = signers.SimpleSigner.load(
+    	key, cert,
+    	ca_chain_files=(cert,),
+    	key_passphrase=pass_phrase
+	)
+	with open(input, 'rb') as inf:
+		w = IncrementalPdfFileWriter(inf)
+		fields.append_signature_field(
+			w, sig_field_spec=fields.SigFieldSpec(
+				'Signatu', box=(200, 600, 400, 660)
+			)
+	)
+	meta = signers.PdfSignatureMetadata(field_name='Signatu')
+	pdf_signer = signers.PdfSigner(
+        meta, signer=signer, stamp_style=stamp.QRStampStyle(
+            # Let's include the URL in the stamp text as well
+            stamp_text='Signed by: %(signer)s\nTime: %(ts)s\nURL: %(url)s',
+            text_box_style=text.TextBoxStyle(
+                font=opentype.GlyphAccumulatorFactory('static/uploads/26_11_21/example.ttf')
+            ),
+            background=images.PdfImage(img)
+        ),
+    )
+	with open('document-signed.pdf', 'wb') as outf:
+		# with QR stamps, the 'url' text parameter is special-cased and mandatory, even if it
+		# # doesn't occur in the stamp text: this is because the value of the 'url' parameter is
+		# # also used to render the QR code.
+		pdf_signer.sign_pdf(
+			w, output=outf,
+			appearance_text_params={'url': 'https://example.com'}
+    )

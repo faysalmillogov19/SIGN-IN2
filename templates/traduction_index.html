@@ -1,0 +1,78 @@
+ {% extends 'layouts/Layout.html'%}
+ <!-- Page Heading -->
+ {% load static %}
+ {% block content %}
+                    <div class="d-sm-flex container card align-items-center justify-content-between mb-4">
+                        
+						<form class="row " method="POST" action="{% url 'traduction' %}" >
+
+							{% csrf_token %}
+
+							<div class="col-12">
+								<h3 class="text-gray-800 text-center">REDACTAUP-TRADUCTION</h3>
+								
+							</div>
+							
+							<div class="col-12">
+								<hr/>
+							</div>
+							
+							<div class="col-12 row">
+								<div class="form-group col-5">
+									<label for="exampleInputEmail1"></label>
+									<select class="select2 form-control" name="source" required>
+										<option value="en">English</option>
+										<option value="fr">Français</option>
+									</select> 
+														  
+								</div>
+								<div class="form-group col-1">
+									<br/>
+									<i class="fas fa-arrow-right"></i>
+									<i class="fas fa-arrow-left"></i>				  
+								</div>
+								<div class="form-group col-6">
+									<label for="exampleInputEmail1"></label>
+									<select class="select2 form-control" name="target" required>
+										<option value="en">English</option>
+										<option value="fr">Français</option>
+									</select> 
+														  
+								</div>
+								
+							</div>
+
+							<div class="col-12 row">
+								<div class="form-group col-5">
+									<label for="exampleInputEmail1"></label>
+									<textarea class="select2 form-control" name="text" required>{{text}}</textarea> 
+														  
+								</div>
+
+								<div class="form-group col-1"></div>
+
+								<div class="form-group col-6">
+									<label for="exampleInputEmail1"></label>
+									<textarea class="select2 form-control" disabled>{%if traduction %} {{traduction}} {% endif %} </textarea> 
+														  
+								</div>
+							</div>
+							
+							<div class="col-12">
+								<hr/>
+							</div>
+							
+																					
+							<div class="col-12">							
+								<button class="d-sm btn btn-sm btn-primary float-right">
+									<i class="fas fa-download fa-sm text-white-50"></i> TRADUIRE
+								</button>							
+							</div>
+							
+							<div class="col-12"><br/></div>
+						</form>
+						
+                        
+                    </div> 
+
+{% endblock %}

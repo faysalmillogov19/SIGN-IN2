@@ -1,0 +1,123 @@
+ {% extends 'layouts/Layout.html'%}
+ <!-- Page Heading -->
+ {% load static %}
+ {% block content %}
+
+    <div class="container">
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-9 col-lg-12 col-md-12">
+
+                <div class="card o-hidden border-0 shadow-lg my-4">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="container">
+                                        <!--img src="{% static 'img/login.png' %}" / style="width:"-->
+                                        <br/>
+                                        <div class="text-center my_pink_bg">
+                                                <h1 class="h1 text-white mb-8">Configuration du Serveur de Messagerie</h1>
+                                        </div>                                  
+                                </div>
+                                
+                            
+                            </div>
+                            <div class="col-lg-12">
+                                <hr/>
+                            </div>
+                            <div class="col-lg-12 ">
+                                <div class="container">
+                                    
+                                    <div class="user">
+                                        <form class="form-group container" method="post" action="{% url 'set_email_server_configuration' %}"id="add_user">
+
+                                            {% csrf_token %}
+
+                                            <input type="hidden" {% if config.id %} value="{{config.id}}" {% endif %} name="id" />
+
+                                            <div class="row form-inline">
+                                                <div><br/></div>
+                                                <div class="input-group col-12">
+                                                  <span class="input-group-text" id="basic-addon1"><img class="img-f img-thumbnail rounded-circle mx-auto d-block " src="{% static 'img/email_icon.png' %}" style="height: 30px;"></span>
+                                                  <input type="email" class="form-control" placeholder="Email *" aria-label="email" aria-describedby="basic-addon1" {% if config.email %} value="{{config.email}}" {% endif %} name="email" required>
+                                                </div>
+
+                                                <div><br/></div>
+
+                                                <div class="input-group col-12">
+                                                  <span class="input-group-text" id="basic-addon1"><img class="img-f img-thumbnail rounded-circle mx-auto d-block " src="{% static 'img/location.png' %}" style="height: 30px;"></span>
+                                                  <input type="text" class="form-control" placeholder="username" aria-label="Username" aria-describedby="basic-addon1" {% if config.username %} value="{{config.username}}" {% endif %}  name="username" >
+                                                </div>
+
+                                                <div><br/></div>
+                                                <div class="input-group col-12">
+                                                  <span class="input-group-text" id="basic-addon1"><img class="img-f img-thumbnail rounded-circle mx-auto d-block " src="{% static 'img/organisation.png' %}" style="height: 30px;"></span>
+                                                  <input type="text" class="form-control" placeholder="Server URL *" aria-label="server_url" aria-describedby="basic-addon1" {% if config.email %} value="{{config.server_url}}" {% endif %}  name="server_url" required>
+                                                </div>
+
+                                                <div><br/></div>
+                                                <div class="input-group col-12">
+                                                  <span class="input-group-text" id="basic-addon1"><img class="img-f img-thumbnail rounded-circle mx-auto d-block " src="{% static 'img/country.png' %}" style="height: 30px;"></span>
+                                                  <select class="form-control" aria-label="Nom" aria-describedby="basic-addon1" name="protocole" class="selectpicker" data-live-search="true" required>
+                                                    {% if config.protocole %}
+                                                        <option value="{{config.protocole.id}}">{{config.protocole.nom}}</option>
+                                                    {% endif %}
+                                                    
+                                                    {% for p in protocoles %}
+                                                        <option value="{{p.id}}">{{p.nom}}</option>
+                                                    {% endfor %}
+                                                  </select>
+                                                </div>
+
+                                                <div><br/></div>
+                                                <div class="input-group col-12">
+                                                  <span class="input-group-text" id="basic-addon1"><img class="img-f img-thumbnail rounded-circle mx-auto d-block " src="{% static 'img/city.png' %}" style="height: 30px;"></span>
+                                                  <input type="number" class="form-control" placeholder="Port " aria-label="Port" aria-describedby="basic-addon1" {% if config.port %} value="{{config.port}}" {% endif %} name="port" >
+                                                </div>
+                                                                                                
+                                                <div><br/></div>
+                                                <div class="input-group col-12">
+                                                  <span class="input-group-text" id="basic-addon1"><img class="img-f img-thumbnail rounded-circle mx-auto d-block " src="{% static 'img/safety-icon.png' %}" style="height: 30px;"></span>
+                                                  <input  type="password" class="form-control" placeholder="Phrase *"  aria-describedby="basic-addon1" name="password"  required>
+                                                </div>
+
+
+                                                <div><br/></div>
+                                                <div class="input-group col-12">
+                                                   <input  type="submit" class="fadeIn fourth btn text-white my_pink_bg btn-user btn-block" value="VALIDER" id="soumettre_login">
+                                                </div>
+
+
+                                            </div>
+                                           
+                                        </form>
+                                       
+                                        
+                                        
+                                    </div>
+                                    <hr>
+                                </div>
+
+                            </div>
+                            
+                            <div class="col-lg-12">
+                                        
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+{% endblock %}

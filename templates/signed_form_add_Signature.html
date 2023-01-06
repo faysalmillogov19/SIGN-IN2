@@ -1,0 +1,115 @@
+ {% extends 'layouts/Layout.html'%}
+ <!-- Page Heading -->
+ {% load static %}
+ {% block content %}
+                    <div class="justify-content-center align-items-center ">
+                        
+						<form class="row " id="signed_form_add_signature" method="POST" action="{% url 'crypter' %}" enctype="multipart/form-data" >
+
+							{% csrf_token %}
+
+							<div class="col-12 ">
+								<br/>
+							</div>
+							<input name="cert" type="hidden" value="{{cert}}">
+							<input name="file_name" type="hidden" value="{{file_name}}">
+
+							
+						    <div class="col-12 container">
+						    	<div class="row card font-weight-bold">
+						    		<div class="col-12">
+						    			<h4 class="my_pink_text text-center text-decoration-underline">Veillez répondre à ces quelques questions avant de signer</h4>
+						    		</div>
+						    		
+							    	<div class="col-6">
+							    		<p class="form-check form-check-inline">Faites vous  parti de cette procedure de signature ?</p>
+							    		<div class="form-check form-check-inline">
+		  										<input class="form-check-input" type="radio" name="im_signed" id="inlineRadio1" value="1" checked>
+		 										 <label class="form-check-label" for="inlineRadio1">OUI</label>
+										</div>
+										<div class="form-check form-check-inline">
+		  										<input class="form-check-input" type="radio" name="im_signed" id="inlineRadio2" value="0">
+		  										<label class="form-check-label" for="inlineRadio2">NON</label>
+										</div>
+											
+							    	</div>
+
+							    	<div class="col-6">
+									    <p class="form-check form-check-inline">Préférez vous utiliser votre signature personnalisée ?</p>
+									    <div class="form-check form-check-inline">
+				  							<input class="form-check-input" type="radio" name="own_signature" id="prefered_signature1" value="1" checked>
+				 							<label class="form-check-label" for="prefered_signature1">OUI</label>
+										</div>
+										<div class="form-check form-check-inline">
+				  							<input class="form-check-input" type="radio" name="own_signature" id="prefered_signature2" value="0">
+				  							<label class="form-check-label" for="prefered_signature2">NON</label>
+										</div>
+													
+									</div>
+									<hr class="col-12">
+								</div>
+						    	
+								<div class="row">
+									<div class="col-4 " id="default_signature_image_value_block">
+										<div class="custom-file" >
+											<input type="hidden" id="default_signature_image_value"  name="default_image" >
+											<div class="dropdown">
+												<label class="custom-file-label pulse" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" for="imageInput">Clicker ici pour choisir un de nos exemplaires de signature *</label>
+												<ul class="dropdown-menu" style="width: 100%; height: 100%;">
+
+
+													{% for personal_signature in personal_signatures %}
+													
+													<li>
+														<img id='{{personal_signature.image_data}}' class="default_signature_image" src="{{personal_signature.image_data}}" width="150px">
+													</li>													
+													{%endfor%}
+
+
+													{% for image in default_signatures_images %}
+													
+													<li>
+														<img id='{{image}}' class="default_signature_image" src="{% static image|slice:'7:' %}" width="150px">
+													</li>													
+													{%endfor%}
+												</ul>
+												<div class="card">
+													<img id="print_signature_image" width="100%" height="300" style="border: 1px solid #ddd;">
+													<br>
+												</div>
+											</div>
+											
+																  
+										</div>
+									</div>
+									<div class="col-6 card">
+										
+										<div class="">
+											<br>
+											<canvas id="signature" class="align-items-center" width="500" height="200" style="border: 3px solid #000;"></canvas>
+											<hr>
+											<a  class="btn  my_pink_bg text-white float-left" id="save-signature">Save</a>
+
+											<a  class="btn  my_pink_bg text-white float-right" id="clear-signature">Clear</a>
+										</div>
+									</div>
+									<div class="col-12">
+										<hr>							
+										<a id="signed_form_add_signature_button" class="btn my_pink_bg text-white float-right"> SIGNER </a>
+									</div>
+
+								</div>
+
+							</div>
+
+
+						
+
+						</form>
+						
+                        
+                    </div> 
+
+
+
+{% endblock %}

@@ -1,0 +1,151 @@
+ {% extends 'layouts/Layout.html'%}
+ <!-- Page Heading -->
+ {% load static %}
+ {% block content %}
+
+    <div class="container">
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-9 col-lg-12 col-md-12">
+
+                <div class="card o-hidden border-0 shadow-lg my-4">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="container">
+                                        <!--img src="{% static 'img/login.png' %}" / style="width:"-->
+                                        <br/>
+                                        <div class="text-center my_pink_bg">
+                                                <h1 class="h1 text-white mb-8">Contrat de signature</h1>
+                                        </div>                                  
+                                </div>
+                                
+                            
+                            </div>
+                            <div class="col-lg-12">
+                                <hr/>
+                            </div>
+                            <div class="col-lg-12 ">
+                                <div class="container">
+                                    
+                                    <div class="user">
+                                        <form class="form-group container" method="post" action="{% url 'add_csr' %}"id="add_user">
+
+                                            {% csrf_token %}
+
+                                            <div class="row form-inline">  
+                                                 <div><br/></div>
+                                                <div class="input-group col-12">
+                                                  <span class="input-group-text" id="basic-addon1"><img class="img-f img-thumbnail rounded-circle mx-auto d-block " src="{% static 'img/country.png' %}" style="height: 30px;"></span>
+                                                  <select class="form-control" aria-label="Nom" aria-describedby="basic-addon1" name="pays" class="selectpicker" data-live-search="true"required>
+                                                        <option>Selectionner un pay</option>
+                                                    {% for p in pays %}
+                                                        <option value="{{p.alpha2}}">{{p.nom_fr_fr}}</option>
+                                                    {% endfor %}
+                                                  </select>
+                                                </div>
+
+                                                <div><br/></div>
+
+                                                <div class="input-group col-12">
+                                                  <span class="input-group-text" id="basic-addon1"><img class="img-f img-thumbnail rounded-circle mx-auto d-block " src="{% static 'img/location.png' %}" style="height: 30px;"></span>
+                                                  <input type="text" class="form-control" placeholder="Region / Province / Zone " aria-label="Nom" aria-describedby="basic-addon1" name="region" >
+                                                </div>
+
+                                                <div><br/></div>
+
+                                                <div class="input-group col-12">
+                                                  <span class="input-group-text" id="basic-addon1"><img class="img-f img-thumbnail rounded-circle mx-auto d-block " src="{% static 'img/city.png' %}" style="height: 30px;"></span>
+                                                  <input type="text" class="form-control" placeholder="Ville /Localité " aria-label="Nom" aria-describedby="basic-addon1" name="localite" >
+                                                </div>
+
+                            
+                                 
+                                                <div><br/></div>
+                                                <div class="input-group col-12">
+                                                  <span class="input-group-text" id="basic-addon1"><img class="img-f img-thumbnail rounded-circle mx-auto d-block " src="{% static 'img/organisation.png' %}" style="height: 30px;"></span>
+                                                  <input type="text" class="form-control" placeholder="Organisation / Entreprise *" aria-label="Nom" aria-describedby="basic-addon1" name="organisation" required>
+                                                </div>
+
+                                                <div><br/></div>
+                                                <div class="input-group col-12">
+                                                  <span class="input-group-text" id="basic-addon1"><img class="img-f img-thumbnail rounded-circle mx-auto d-block " src="{% static 'img/services.png' %}" style="height: 30px;"></span>
+                                                  <input type="text" class="form-control" placeholder="Direction / service " aria-label="Nom" aria-describedby="basic-addon1" name="direction" >
+                                                </div>
+
+                                                <div><br/></div>
+                                                <div class="input-group col-12">
+                                                  <span class="input-group-text" id="basic-addon1"><img class="img-f img-thumbnail rounded-circle mx-auto d-block " src="{% static 'img/email_icon.png' %}" style="height: 30px;"></span>
+                                                  <input type="email" class="form-control" placeholder="Email " aria-label="email" aria-describedby="basic-addon1" name="email" required>
+                                                </div>
+                                               
+                                                <div><br/></div>
+                                                <div class="input-group col-12">
+                                                  <span class="input-group-text" id="basic-addon1"><img class="img-f img-thumbnail rounded-circle mx-auto d-block " src="{% static 'img/phone_icon.png' %}" style="height: 30px;"></span>
+                                                  <input type="tel" class="form-control" placeholder="Telephone *" aria-label="telephone" aria-describedby="basic-addon1" name="telephone" pattern="((?:\+|00)[17](?: |\-)?|(?:\+|00)[1-9]\d{0,2}(?: |\-)?|(?:\+|00)1\-\d{3}(?: |\-)?)?(0\d|\([0-9]{3}\)|[1-9]{0,3})(?:((?: |\-)[0-9]{2}){4}|((?:[0-9]{2}){4})|((?: |\-)[0-9]{3}(?: |\-)[0-9]{4})|([0-9]{7}))" title="Renseigner un numéro de telephone valide. Précisé l'indicatif du pays Ex :+226 ou 00226" required>
+                                                </div>
+                                                
+                                                <div><br/></div>
+                                                <div class="input-group col-12">
+                                                  <span class="input-group-text" id="basic-addon1"><img class="img-f img-thumbnail rounded-circle mx-auto d-block " src="{% static 'img/safety-icon.png' %}" style="height: 30px;"></span>
+                                                  <input  type="password" class="form-control" placeholder="Phrase *"  aria-describedby="basic-addon1" name="pass_phrase" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"title="La phrase a une longueur minimale de huit (8) caractères.
+                                                  Comporte : au moins une lettre miniscule, une lettre majuscule, au moins un chiffre et d'au moins un caractère spécial (Ex: @ . , ; : etc.)" required>
+                                                </div>
+
+                                                <div><br/></div>
+                                                <div class="input-group col-12">
+                                                    {% if key_size %}
+                                                        <div><span>Veillez choisir la taille de la cle de Chiffrement : </span> </div>
+                                                        {% for val in key_size%}
+                                                        <div class="form-check form-check-inline">
+                                                          <input class="form-check-input" type="radio" name="key_size"  value="{{ val }}" required>
+                                                          <label class="form-check-label" for="inlineRadio1">{{ val }}</label>
+                                                        </div>
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                    
+                                                    
+                                                </div>
+
+                            
+
+
+                                                <div><br/></div>
+                                                <div class="input-group col-12">
+                                                   <input  type="submit" class="fadeIn fourth btn text-white my_pink_bg btn-user btn-block" value="Generer" id="soumettre_login">
+                                                </div>
+
+
+                                            </div>
+                                           
+                                        </form>
+                                       
+                                        
+                                        
+                                    </div>
+                                    <hr>
+                                </div>
+
+                            </div>
+                            
+                            <div class="col-lg-12">
+                                        
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+{% endblock %}

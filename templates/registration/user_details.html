@@ -1,0 +1,122 @@
+ {% extends 'layouts/LayoutConnexion.html'%}
+ <!-- Page Heading -->
+ {% load static %}
+ {% block content %}
+
+    <div class="container">
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-9 col-lg-12 col-md-12">
+
+                <div class="card o-hidden border-0 shadow-lg my-4">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="container">
+                                        <!--img src="{% static 'img/login.png' %}" / style="width:"-->
+                                        <br/>
+                                        <div class="text-center my_pink_bg">
+                                                <h1 class="h1 text-white mb-8">Nouveau Compte</h1>
+                                        </div>                                  
+                                </div>
+                                
+                            
+                            </div>
+                            <div class="col-lg-12">
+                                <hr/>
+                            </div>
+                            <div class="col-lg-12 ">
+                                <div class="container">
+                                    
+                                    <div class="user">
+                                        <form class="form-group container" method="post" action="{% url 'add_user' %}"id="add_user">
+
+                                            {% csrf_token %}
+
+                                            <div class="row form-inline">  
+                                                 <div><br/></div>
+                                                <div class="input-group col-12">
+                                                  <span class="input-group-text" id="basic-addon1"><img class="img-f img-thumbnail rounded-circle mx-auto d-block " src="{% static 'img/user_icon.png' %}" style="height: 30px;"></span>
+                                                  <input type="text" class="form-control" placeholder="Nom" aria-label="Nom" aria-describedby="basic-addon1" name="nom" required>
+                                                </div>
+
+                                                <div><br/></div>
+                                                <div class="input-group col-12">
+                                                  <span class="input-group-text" id="basic-addon1"><img class="img-f img-thumbnail rounded-circle mx-auto d-block " src="{% static 'img/user_icon.png' %}" style="height: 30px;"></span>
+                                                  <input type="text" class="form-control" placeholder="Prenom" aria-label="Nom" aria-describedby="basic-addon1" name="prenom" required>
+                                                </div>
+                                 
+                                                <div><br/></div>
+                                                <div class="input-group col-12">
+                                                  <span class="input-group-text" id="basic-addon1"><img class="img-f img-thumbnail rounded-circle mx-auto d-block " src="{% static 'img/user_icon.png' %}" style="height: 30px;"></span>
+                                                  <input type="text" class="form-control" placeholder="username" aria-label="Nom" aria-describedby="basic-addon1" name="username" required>
+                                                </div>
+                                                <div><br/></div>
+                                                <div class="input-group col-12">
+                                                  <span class="input-group-text" id="basic-addon1"><img class="img-f img-thumbnail rounded-circle mx-auto d-block " src="{% static 'img/email_icon.png' %}" style="height: 30px;"></span>
+                                                  <input type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" name="email" required>
+                                                </div>
+
+                                                <div><br/></div>
+                                                <div class="input-group col-12">
+                                                  <span class="input-group-text" id="basic-addon1"><img class="img-f img-thumbnail rounded-circle mx-auto d-block " src="{% static 'img/phone_icon.png' %}" style="height: 30px;"></span>
+                                                  <input type="tel" class="form-control" placeholder="Telephone" aria-label="telephone" aria-describedby="basic-addon1" name="telephone" required>
+                                                </div>
+                                                
+                                                <div><br/></div>
+                                                <div class="input-group col-12">
+                                                  <span class="input-group-text" id="basic-addon1"><img class="img-f img-thumbnail rounded-circle mx-auto d-block " src="{% static 'img/safety-icon.png' %}" style="height: 30px;"></span>
+                                                  <input id="password" type="password" class="form-control" placeholder="Password"  aria-describedby="basic-addon1" name="password" min="8" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"title="Le mot de passe a une longueur minimale de huit (8) caractères.
+                                                  Comporte : au moins une lettre miniscule, une lettre majuscule, au moins un chiffre et d'au moins un caractère spécial (Ex: @ . , ; : etc.)" required>
+                                                </div>
+
+                                                <div class="col-12 text-danger">
+                                                    <br>
+                                                    <p  id="msg_password"></p>
+                                                </div>
+
+                                                <div class="input-group col-12">
+                                                  <span class="input-group-text" id="basic-addon1"><img class="img-f img-thumbnail rounded-circle mx-auto d-block " src="{% static 'img/safety-icon.png' %}" style="height: 30px;"></span>
+                                                  <input id="confirm_password" type="password" class="form-control" placeholder="Confirm Password" aria-label="Telephone" aria-describedby="basic-addon1" name="confirmpassword" title="Les mots de passes ne sont pas identiques"  required>
+                                                </div>
+
+
+                                                <div><br/></div>
+                                                <div class="input-group col-12">
+                                                   <input  type="submit" class="fadeIn fourth btn my_pink_bg text-white btn-user btn-block" value="Enregistrer" id="soumettre_login">
+                                                </div>
+
+
+                                            </div>
+                                           
+                                        </form>
+                                       
+                                        
+                                        
+                                    </div>
+                                    <hr>
+                                </div>
+
+                            </div>
+                            
+                            <div class="col-lg-12">
+                                        
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+{% endblock %}

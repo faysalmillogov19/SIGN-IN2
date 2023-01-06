@@ -1,0 +1,140 @@
+ {% extends 'layouts/Layout.html'%}
+ <!-- Page Heading -->
+ {% load static %}
+ {% block content %}
+                    <div class="justify-content-center align-items-center ">
+
+						<div class="modal" id="exampleModal"  tabindex="-1" role="dialog">
+							
+							<div class="modal-dialog"  role="document">
+								
+							  <div class="modal-content">
+								<form id="new_signataire" method="post" action="{% url 'signer' %}">
+									{% csrf_token %}
+									<div class="modal-header my_pink_bg text-center ">
+									<h5 class="modal-title text-white text-center">Information sur le signataire</h5>
+									<a type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</a>
+									</div>
+									<div class="modal-body">
+										<div><br/></div>
+									<div class="input-group col-12" id="nom_complet_zone">
+										
+										<image class="img-fluid img-thumbnail align-self-center rounded-circle" src="{%static 'img/user_icon.png' %}" style="width: 40px;">
+										<input id='nom_complet' type="text" class="form-control align-self-center" placeholder="Nom complet" aria-label="Nom complet" aria-describedby="basic-addon1" name="nom_complet" required>									
+
+									</div>
+									<div class="row h-100 justify-content-center align-items-center" >
+										<p class='text-danger text-center row' id="nom_complet_error_message"></p>
+									</div>
+
+									<div><br/></div>
+									<div class="input-group col-12" id="email_zone">
+										<hr/>
+										<image class="img-fluid img-thumbnail rounded-circle align-self-center" src="{%static 'img/email_icon.png' %}" style="width: 40px;">
+										<input id='email' type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" name="email" required>
+									</div>
+									<div class="row h-100 justify-content-center align-items-center" >
+										<p class='text-danger text-center row' id="email_error_message"></p>
+									</div>
+
+									<div><br/></div>
+									<div class="input-group col-12" id="telephone_zone">
+										<image class="img-fluid img-thumbnail rounded-circle align-self-center" src="{%static 'img/phone_icon.png' %}" style="width: 40px;">
+										<input id='telephone' type="text" class="form-control" placeholder="Telephone" aria-label="Telephone" aria-describedby="basic-addon1" name="telephone" required>
+									</div>
+									<div class="row h-100 justify-content-center align-items-center" >
+										<p class='text-danger text-center row' id="telephone_error_message"></p>
+									</div>
+
+									<input type="hidden" id="id_signataire" name="id">
+
+									</div>
+									<div class="modal-footer">
+									<button type="button" class="btn my_pink_bg text-white" id="confirm_ajout_signantaire">Ajouter</button>
+									<!--button type="button" class="btn my_pink_bg text-white" id="confirm_ajout_signantaire">Ajouter</button-->
+									<a type="button" class="btn btn-secondary" data-dismiss="modal">Quitter</a>
+									</div>
+								</form>
+							  </div>
+							</div>
+						</div>
+                        <br/><br/>
+						<form class="row " method="POST" action="{% url 'add_pdf_doc' %}" enctype="multipart/form-data" >
+
+							{% csrf_token %}
+
+
+							<div class="col-4 ">
+											
+									<div class="row">
+										
+										
+										<div class="col-5">
+											<a class="btn  my_pink_bg text-white float-right ajouter_signataire" data-toggle="modal" data-target="#exampleModal">
+												<i class="fas fa-plus ">Ajouter Signataire</i> 
+											</a>
+										</div>
+										
+
+									</div>
+
+							</div>
+
+							
+						    <div class="col-8 container">
+								</br>	
+						    	<table class="table">
+									<thead>
+									  <tr>
+										<th scope="col">#</th>
+										<th scope="col">Nom</th>
+										<th scope="col">Email</th>
+										<th scope="col">Telephone</th>
+										<th scope="col">Modifier</th>
+										<th scope="col">Supprimer</th>
+									  </tr>
+									</thead>
+									<tbody>
+									  {% for signataire in liste_signataires %}
+									  <tr id="element_signataire{{signataire.id}}">
+										<th scope="row"></th>
+										<td>
+											<input id="nom_row{{signataire.id}}" type="text" class="form-control" placeholder="Nom complet" aria-label="Nom" aria-describedby="basic-addon1" value="{{signataire.nom_complet}}" name="nom_complet_liste[]" disabled required>
+										</td>
+										<td>
+											<input id="email_row{{signataire.id}}" type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" value="{{signataire.email}}" name="email_liste[]" disabled required>
+
+										</td>
+										<td>
+											<input id="tel_row{{signataire.id}}" type="text" class="form-control" placeholder="Telephone" aria-label="Telephone" aria-describedby="basic-addon1" value="{{signataire.telephone}}" name="telephone_liste[]" disabled required>
+										</td>
+										<td>
+											<a data-toggle="modal" data-target="#exampleModal" class="btn  my_pink_bg text-white  update_signataire" disabled id="update{{signataire.id}}">&#9999;</a>
+										</td>
+										<td>
+											<a class="btn  my_pink_bg text-white  delete_signataire" id="{{signataire.id}}">&#x1F5D1</a>
+										</td>
+									  </tr>
+									  {% endfor %}
+									</tbody>
+								</table>
+
+								<div class="">
+									<hr>							
+									<button class="btn my_pink_bg text-white float-right"> SUIVANT </button>							
+							</div>
+
+
+							</div>
+
+
+						</form>
+						
+                        
+                    </div> 
+
+
+
+{% endblock %}

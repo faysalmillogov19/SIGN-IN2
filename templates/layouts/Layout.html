@@ -1,0 +1,419 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title> SIGN IN </title>
+
+    <!-- Custom fonts for this template-->
+    <!--link href="{% static '/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css"-->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <!--link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"-->
+
+    <!-- Custom styles for this template-->
+    <link href="{%  static '/css/sb-admin-2.min.css' %}" rel="stylesheet">
+    <link href="{%  static '/css/personal_css.css' %}" rel="stylesheet">
+    
+
+
+</head>
+
+<body id="page-top">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">
+  <a href="#" class="navbar-brand font-weight-bold d-block d-lg-none">Menu</a>
+  <button type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+  <div id="navbarContent" class="collapse navbar-collapse">
+    <ul class="navbar-nav mx-auto">
+      <!-- Megamenu-->
+      <li class="nav-item"><a href="/" class="nav-link font-weight-bold text-uppercase">Accueil</a></li>
+      <li class="nav-item dropdown megamenu"><a id="megamneu" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle font-weight-bold text-uppercase">Parametres</a>
+        <div aria-labelledby="megamneu" class="dropdown-menu border-0 p-0 m-0">
+                <div class="row">
+                   
+                    <div class="col-lg-12 mb-12">
+                      <h6 class="font-weight-bold text-uppercase"></h6>
+                      <ul class="list-unstyled">
+                        <li class="nav-item"><a href="{% url 'email_server_configuration' %}" class="nav-link text-small pb-0 ">Serveur de Messagerie Email</a></li>
+                        <li class="nav-item"><a href="{% url 'default_parameters' %}" class="nav-link text-small pb-0 ">Messages par defaut</a></li>
+                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">Auto Carousel</a></li>
+                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">Newsletter Form</a></li>
+                      </ul>
+                    </div>
+                    <!--div class="col-lg-6 mb-4">
+                      <h6 class="font-weight-bold text-uppercase">MegaMenu heading</h6>
+                      <ul class="list-unstyled">
+                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">Unique Features</a></li>
+                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">Image Responsive</a></li>
+                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">Auto Carousel</a></li>
+                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">Newsletter Form</a></li>
+                      </ul>
+                    </div-->
+                </div>
+              
+        </div>
+      </li>
+      <li class="nav-item"><a href="{% url 'sign'%}" class="nav-link font-weight-bold text-uppercase">Signer</a></li>
+      <li class="nav-item"><a href="{% url 'add_csr'%}" class="nav-link font-weight-bold text-uppercase">Certificat</a></li>
+      <li class="nav-item"><a class="nav-link font-weight-bold text-uppercase">Services</a></li>
+      <li class="nav-item"><a href="#" class="nav-link font-weight-bold text-uppercase">Contact</a></li>
+      <li class="nav-item"><a href="{% url 'list_signed_document'%}" class="nav-link font-weight-bold text-uppercase">Archives</a></li>
+      {% if user.is_authenticated %}
+      <li class="nav-item"><a href="{%url 'logout'%}" class="nav-link font-weight-bold text-uppercase">Deconnexion</a></li>
+      {% else %}
+      <li class="nav-item"><a href="{% url 'login'%}" class="nav-link font-weight-bold text-uppercase">Connexion</a></li>
+      {%endif%}
+    </ul>
+  </div>
+</nav>
+
+
+<!-- For demo purpose -->
+{% block section %}
+
+{% endblock %}
+
+
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="">
+                   
+					{% block content %}{% endblock %}
+
+                </div>
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2021</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+
+    <script src="{% static '/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static '/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{% static '/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{% static '/js/sb-admin-2.min.js' %}"></script>
+
+    <!-- Page level plugins -->
+    <script src="{% static '/vendor/chart.js/Chart.min.js' %}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{% static '/js/demo/chart-area-demo.js' %}"></script>
+    <script src="{% static '/js/demo/chart-pie-demo.js' %}"></script>
+    <script src="{% static '/js/signature_pad.min.js' %}"></script>
+<script>
+    
+    var canvas = document.getElementById("signature");
+    var signaturePad = new SignaturePad(canvas);
+
+     $('#print_signature_image').attr('src',  $('#default_signature_image_value').val());
+    
+    $('#clear-signature').on('click', function(){
+        signaturePad.clear();
+    });
+
+    $('.default_signature_image').on('click', function(){
+        src=$(this).attr('src');
+        id=$(this).attr('id');
+        $('#print_signature_image').attr('src', src);
+        $('#default_signature_image_value').val(id);
+    
+        
+    });
+    
+</script>
+<script>
+    $("#signed_form_add_signature_button").click(function(){
+        
+        var own_signature= parseInt($('input[name$="own_signature"]:checked').val());
+        var default_signature=$('#default_signature_image_value').val();
+        var isOk=0;
+        $('#default_signature_image_value').attr("required",false);
+        $('#default_signature_image_value_block').removeClass("border border-danger");
+
+        if(own_signature==0 & !default_signature){
+            $('#default_signature_image_value').attr("required",true);
+            $('#default_signature_image_value_block').addClass("border border-danger");
+        }
+        else if(own_signature==0){
+            $("#signed_form_add_signature").submit();
+        }
+        else{
+             var canvas = document.getElementById("signature");
+             var dataURL = canvas.toDataURL("image/png");
+             $('#default_signature_image_value').val(dataURL);
+             $("#signed_form_add_signature").submit();
+        }
+        
+
+    });
+
+    $("#other_signers_form_button").click(function(){
+        
+        var own_signature= parseInt($('input[name$="own_signature"]:checked').val());
+        var default_signature=$('#default_signature_image_value').val();
+        var isOk=0;
+        $('#default_signature_image_value').attr("required",false);
+        $('#default_signature_image_value_block').removeClass("border border-danger");
+       if(own_signature==1){
+             var canvas = document.getElementById("signature");
+             var dataURL = canvas.toDataURL("image/png");
+             $('#default_signature_image_value').val(dataURL);
+             $("#others_signers_form").submit();
+        }
+        else if (!default_signature){
+            $('#default_signature_image_value').attr("required",true);
+            $('#default_signature_image_value_block').addClass("border border-danger");
+        }
+        else{
+            $("#others_signers_form").submit();
+
+        }
+                
+        
+
+    });
+
+    function save_signature(image){
+    
+    $.ajax({
+
+            type: 'POST',
+
+            url: "{% url 'add_personnal_signature' %}",
+
+            data: {"csrfmiddlewaretoken" : "{{csrf_token}}", "default_signature": image},
+
+            success: function (response) {
+
+                    return response;
+
+            },
+
+            error: function (response) {
+
+                return response;
+
+            }
+
+    })
+}
+
+$("#save-signature").click(function(){
+    var canvas = document.getElementById("signature");
+    var image = canvas.toDataURL("image/png");
+    save_signature(image);
+    $('#default_signature_image_value').val(image);
+    location.reload(true);
+
+});
+
+
+</script>
+
+	<script>
+		$('#inputFile').change(function(){
+				var file = $("input[type=file]").get(0).files[0];
+		 
+				if(file){
+					var reader = new FileReader();
+		 
+					reader.onload = function(){
+						$("#fileSrc").attr("data", reader.result);
+					}
+		 
+					reader.readAsDataURL(file);
+				}
+			
+		});
+	</script>
+    
+    <script>
+        var nb_new_signataire=1;
+        function ajouterUsernane()
+        {
+            var $new_signataire=$('.element_liste_signataire').clone();
+            $new_signataire.attr('id','signataire'+nb_new_signataire);
+            $('#listesignataire').append($new_signataire);
+
+        }
+
+        function ajouterModal()
+        {
+            var new_signataire=$('#exampleModal').clone();
+            new_signataire.attr('id','modal'+nb_new_signataire);
+            $('.mon_block').append(new_signataire);
+
+        }
+
+
+$("#confirm_ajout_signantaire").click(function(){
+    t=0;
+    message='';
+    nom_complet=$('#nom_complet').val();
+    telephone=$('#telephone').val();
+    email=$('#email').val();
+    emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    telephoneReg=/^\+[1-9]\d{1,14}$/;
+    nom_completReg=/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
+    if( !emailReg.test( email ) || email==='' ){
+        t=1;
+        message='Entrer un email valide. Format: email@email.com'
+    }  
+    $('#email_error_message').text(message);
+    message='';
+
+    if( !nom_completReg.test( nom_complet ) ){
+        t=1;
+        message='Entrer un nom valide. Ex: Pas de chiffre'
+    }
+    $('#nom_complet_error_message').text(message);
+    message='';
+
+    if( !telephoneReg.test( telephone ) ){
+        t=1;
+        message='Entrer un numero de telephone valide.'
+    }    
+    $('#telephone_error_message').text(message);
+    message='';
+
+    if(t==0){
+        $('#new_signataire').submit();
+    //add_signataire(nom_complet,email,telephone)
+    }
+
+});
+
+$('.update_signataire').click(function(){
+    id=$(this).attr('id');
+    id=id.replace('update','');
+    $('#nom_complet').attr('value',$('#nom_row'+id).val());
+    $('#telephone').attr('value',$('#tel_row'+id).val());
+    $('#email').attr('value',$('#email_row'+id).val());
+    $('#id_signataire').attr('value',id);
+    
+});
+
+        
+$(".delete_signataire").click(function(){
+
+    id=$(this).attr('id');
+    delete_signataire(id)
+            
+});
+
+function add_signataire(nom_complet,email,telephone){
+    
+    $.ajax({
+
+            type: 'POST',
+
+            url: "{% url 'signer' %}",
+
+            data: {"csrfmiddlewaretoken" : "{{csrf_token}}", "nom_complet": nom_complet, 'email':email, 'telephone':telephone},
+
+            success: function (response) {
+
+                    id="signataire_element"+response['id'];
+                    alert(id);
+                    new_signataire='<a class="border btn  my_pink_bg text-white signataire_element" id="'+id+'">'+nom_complet+'<span class="delete_signataire" id="'+response['id']+'">&times;</span></a>';
+                    $('#listesignataire').append(new_signataire);
+                    $('#'+"signataire_element"+response['id']).hide();
+
+            },
+
+            error: function (response) {
+
+                console.log(response)
+
+            }
+
+    })
+}
+
+function delete_signataire(id){
+    $.ajax({
+
+        type: 'POST',
+
+        url: "{% url 'delete_signer' %}",
+
+        data: {"csrfmiddlewaretoken" : "{{csrf_token}}", "id": id,},
+
+        success: function (response) {
+            element='#element_signataire'+id;
+            $(element).hide();
+
+        },
+
+        error: function (response) {
+
+
+        }
+
+    })
+
+}
+
+
+    </script>
+    <script>
+        $('#container').click(function(){
+            alert('amadou');
+            var parentOffset = $(this).parent().offset(); 
+            //or $(this).offset(); if you really just want the current element's offset
+            var relX = e.pageX - parentOffset.left;
+            var relY = e.pageY - parentOffset.top;
+           
+        });
+    </script>
+</body>
+
+</html>
